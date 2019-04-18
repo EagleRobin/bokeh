@@ -118,7 +118,7 @@ export abstract class ColumnarDataSource extends DataSource {
   clear(): void {
     const empty: {[key: string]: Arrayable} = {}
     for (const col of this.columns()) {
-      empty[col] = new (this.data[col].constructor as any)
+      empty[col] = new this.data[col].constructor(0)
     }
     this.data = empty
   }
